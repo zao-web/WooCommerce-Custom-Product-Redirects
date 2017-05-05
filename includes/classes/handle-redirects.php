@@ -46,7 +46,7 @@ class Handle_Redirects {
 	 * @return string             Maybe-modified return URL.
 	 */
 	public static function maybe_modify_redirect_url( $return_url, $order ) {
-		$redirect = self::get_redirect_url( $order->id, $return_url );
+		$redirect = self::get_redirect_url( $order->get_id(), $return_url );
 		if ( $redirect ) {
 			$return_url = $redirect;
 		}
@@ -80,7 +80,7 @@ class Handle_Redirects {
 				}
 
 				// Get redirect for this product.
-				if ( $maybe_redirect = Functions\get_product_redirect( $product->id ) ) {
+				if ( $maybe_redirect = Functions\get_product_redirect( $product->get_id() ) ) {
 					$redirect_stack[] = $maybe_redirect;
 				}
 			}
@@ -94,7 +94,7 @@ class Handle_Redirects {
 				$redirect = Functions\transfer_query_vars( $prev_url, $redirect );
 			}
 
-			$redirect = esc_url_raw( add_query_arg( 'order_id', $order->id, $redirect ) );
+			$redirect = esc_url_raw( add_query_arg( 'order_id', $order->get_id(), $redirect ) );
 		}
 
 		return $redirect;
