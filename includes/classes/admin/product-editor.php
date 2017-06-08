@@ -6,7 +6,7 @@ class Product_Editor {
 
 	public function init() {
 		add_action( 'woocommerce_product_options_advanced', array( $this, 'render_redirect_options' ) );
-		add_action( 'woocommerce_process_product_meta',     array( $this, 'save_redirect_options' ), 10, 2 );
+		add_action( 'woocommerce_admin_process_product_object', array( $this, 'save_redirect_options' ), 10, 2 );
 	}
 
 	/**
@@ -37,27 +37,22 @@ class Product_Editor {
 	}
 
 	/**
-	 * Saves the redirect data inputed into the product boxes, as post meta data.
+	 * Saves the redirect data inputed into the product boxes, as product props.
 	 *
-	 * @param int      $post_id the post (product) identifier
-	 * @param stdClass $post    the post (product)
+	 * @param mixed $product the product object.
 	 */
-	public function save_redirect_options( $post_id, $post ) {
-		if ( empty( $post_id ) ) {
-			return;
-		}
-
+	public function save_redirect_options( $product ) {
 		$redirect = ! empty( $_REQUEST['product_redirect'] )
 			? esc_url_raw( $_REQUEST['product_redirect'] )
 			: '';
-
-		update_post_meta( $post_id, 'product_redirect', $redirect );
+		$product->update_meta_data( 'product_redirect', $redirect );
 
 		$priority = ! empty( $_REQUEST['product_redirect_priority'] )
 			? intval( $_REQUEST['product_redirect_priority'] )
 			: '';
+		$product->update_meta_data( 'product_redirect_priority', $priority );
 
-		update_post_meta( $post_id, 'product_redirect_priority', $priority );
+		$product->save_meta_data();
 	}
 
 	/**
