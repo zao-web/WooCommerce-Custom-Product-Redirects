@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Custom Product Redirects
  * Plugin URI:  https://www.qpractice.com
  * Description: Configure checkout redirects for your products. Can be configured globally and individually per product with a priority.
- * Version:     0.1.0
+ * Version:     0.1.1
  * Author:      Justin Sternberg
  * Author URI:  http://zao.is
  * Text Domain: wooproduct_redirects
@@ -36,7 +36,7 @@
  */
 
 // Useful global constants
-define( 'WOOPRODUCT_REDIRECTS_VERSION', '0.1.0' );
+define( 'WOOPRODUCT_REDIRECTS_VERSION', '0.1.1' );
 define( 'WOOPRODUCT_REDIRECTS_URL',     plugin_dir_url( __FILE__ ) );
 define( 'WOOPRODUCT_REDIRECTS_PATH',    dirname( __FILE__ ) . '/' );
 define( 'WOOPRODUCT_REDIRECTS_INC',     WOOPRODUCT_REDIRECTS_PATH . 'includes/' );

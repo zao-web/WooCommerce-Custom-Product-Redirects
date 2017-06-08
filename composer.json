@@ -1,7 +1,7 @@
 {
 	"name": "woocommerce-custom-product-redirects",
 	"description": "Configure checkout redirects for your products. Can be configured globally and individually per product with a priority.",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"type": "wordpress-plugin",
 	"keywords": [],
 	"homepage": "https://www.qpractice.com",
